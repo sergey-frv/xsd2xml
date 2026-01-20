@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://mincomsvyaz/esia/rfPassport_documents/1.0.0" xmlns:types="urn://mincomsvyaz/esia/base_types/1.0.0" targetNamespace="urn://mincomsvyaz/esia/rfPassport_documents/1.0.0" elementFormDefault="qualified">
+	<xs:import namespace="urn://mincomsvyaz/esia/base_types/1.0.0" schemaLocation="commons/base_types.xsd"/>
+	<xs:element name="passportHistory" type="tns:passportHistoryType">
+		<xs:annotation>
+			<xs:documentation>Паспортное досье (история выданных паспортов)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="passportHistoryType">
+		<xs:annotation>
+			<xs:documentation>Паспортное досье (история выданных паспортов)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="passportHistoryType" type="tns:passportDataType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Паспортное досье (история выданных паспортов)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="passportDataType">
+		<xs:annotation>
+			<xs:documentation>Данные паспорта из истории выданных паспортов</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="baseDoc" type="types:baseDocType">
+				<xs:annotation>
+					<xs:documentation>Серия, номер, дата выдачи паспорта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issuedBy" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Кем выдан паспорт</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код подразделения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="passportType" type="tns:passportTypeType">
+				<xs:annotation>
+					<xs:documentation>Тип паспорта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="passportStatus" type="tns:passportStatusType">
+				<xs:annotation>
+					<xs:documentation>Статус паспорта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="invalidityReason" type="tns:invalidityReasonType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Причина недействительности</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="passportTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RF_PASSPORT">
+				<xs:annotation>
+					<xs:documentation>паспорт гражданина РФ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRGN_PASS">
+				<xs:annotation>
+					<xs:documentation>заграничный паспорт гражданина РФ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="USSR_PASSPORT">
+				<xs:annotation>
+					<xs:documentation>паспорт СССР</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="passportStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="valid">
+				<xs:annotation>
+					<xs:documentation>Действителен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="invalid">
+				<xs:annotation>
+					<xs:documentation>Не действителен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="noInformation">
+				<xs:annotation>
+					<xs:documentation>Сведениями по заданным реквизитам не располагаем</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="invalidityReasonType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="expired">
+				<xs:annotation>
+					<xs:documentation>истек срок действия</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="replaced">
+				<xs:annotation>
+					<xs:documentation>заменен на новый</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="withViolation">
+				<xs:annotation>
+					<xs:documentation>выдан с нарушением</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="inSearch">
+				<xs:annotation>
+					<xs:documentation>в розыске</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="destroyed">
+				<xs:annotation>
+					<xs:documentation>изъят, уничтожен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ownerDeath">
+				<xs:annotation>
+					<xs:documentation>в связи со смертью владельца</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="technicalDefect">
+				<xs:annotation>
+					<xs:documentation>технический брак</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="lost">
+				<xs:annotation>
+					<xs:documentation>утрачен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

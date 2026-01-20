@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="XsdToXmlGenerator.Lib/XsdToXmlGenerator.Lib.csproj" />
+  <Project Path="XsdToXmlGenerator.Tests/XsdToXmlGenerator.Tests.csproj" />
+  <Project Path="XsdToXmlGenerator/XsdToXmlGenerator.csproj" />
+</Solution>

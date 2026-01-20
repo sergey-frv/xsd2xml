@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://mincomsvyaz/esia/divorceCert_documents/1.0.0" xmlns:types="urn://mincomsvyaz/esia/base_types/1.0.0" targetNamespace="urn://mincomsvyaz/esia/divorceCert_documents/1.0.0" elementFormDefault="qualified">
+	<xs:import namespace="urn://mincomsvyaz/esia/base_types/1.0.0" schemaLocation="commons/base_types.xsd"/>
+	<xs:element name="divorceCert" type="tns:divorceCertType">
+		<xs:annotation>
+			<xs:documentation>Свидетельство о расторжении брака</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="divorceCertType">
+		<xs:annotation>
+			<xs:documentation>Свидетельство о расторжении брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="divorceCert" type="types:baseDataEGRZAGSType">
+				<xs:annotation>
+					<xs:documentation>Свидетельство о расторжении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="actRecordFound" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Признак наличия связанной с этим свидетельством записи АГС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="actRecord" type="tns:DivorceRecordType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Запись АГС о расторжении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DivorceRecordType">
+		<xs:annotation>
+			<xs:documentation>Сведения о государственной регистрации расторжения брака</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ProofBlock" type="types:ProofBlockType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сведения о достоверности персональных данных пользователя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="actNo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Номер записи акта о расторжении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="versionNo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Номер версии записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="versionDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата версии записи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="actIncompleteDate" type="types:actIncompleteDateType">
+					<xs:annotation>
+						<xs:documentation>Дата регистрации записи по представленным документам (неполная дата)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="actDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>Дата составления записи акта о расторжении брака</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="registryOffice" type="types:registryOfficeType">
+				<xs:annotation>
+					<xs:documentation>Сведения об органе ЗАГС, которым произведена государственная регистрация расторжения брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordStatus" type="types:recordStatusType">
+				<xs:annotation>
+					<xs:documentation>Сведения о состоянии и статусе записи акта о расторжении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="certs" type="types:certsType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Сведения о выданном Свидетельстве о расторжении брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="divorceInfo">
+				<xs:annotation>
+					<xs:documentation>Передаваемые сведения о государственной регистрации расторжения брака</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:choice>
+							<xs:element name="divorceIncompleteDate" type="types:actIncompleteDateType">
+								<xs:annotation>
+									<xs:documentation>Дата расторжения брака (неполная дата)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="divorceDate" type="xs:date">
+								<xs:annotation>
+									<xs:documentation>Дата расторжения брака</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:choice>
+						<xs:element name="exHusband" type="types:partnerType">
+							<xs:annotation>
+								<xs:documentation>Бывший супруг</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="exWife" type="types:partnerType">
+							<xs:annotation>
+								<xs:documentation>Бывшая супруга</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="recordCorrection" type="types:zagsChangesInRecordType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Сведения о внесенных исправлениях и изменениях в запись акта о заключении (расторжении) брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordRecovery" type="types:zagsChangesInRecordType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сведения о восстановлении записи акта о заключении (расторжении) брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recordCancelling" type="types:zagsChangesInRecordType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сведения об аннулировании записи акта о заключении (расторжении) брака</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

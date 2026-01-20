@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://mincomsvyaz/esia/contact_Details_documents/1.0.0" xmlns:types="urn://mincomsvyaz/esia/base_types/1.0.0" targetNamespace="urn://mincomsvyaz/esia/contact_Details_documents/1.0.0" elementFormDefault="qualified">
+	<xs:import namespace="urn://mincomsvyaz/esia/base_types/1.0.0" schemaLocation="commons/base_types.xsd"/>
+	<xs:element name="contactDetails" type="tns:contactDetailsType">
+		<xs:annotation>
+			<xs:documentation>Контактные данные пользователя</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="contactDetailsType">
+		<xs:sequence>
+			<xs:element name="mobilePhone" type="tns:mobilePhoneType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Мобильный телефон пользователя ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="email" type="tns:emailType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес электронной почты пользователя ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="mobilePhoneType">
+		<xs:restriction base="xs:string">
+			<xs:length value="14"/>
+			<xs:pattern value="\+7\(\d{3}\)\d{7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="emailType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+			<xs:pattern value="[0-9a-zA-Z_.\-]{2,50}[@]{1}[0-9a-zA-Z_./-]{2,50}[.]{1}[a-zA-Z]{2,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:smzVS="urn://x-artefacts-gnivc-ru/ais3/SMZ/SmzPartnersValidationService/types/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="urn://x-artefacts-gnivc-ru/ais3/SMZ/SmzPartnersValidationService/types/1.0"
+           elementFormDefault="qualified" version="0.1">
+
+    <xs:complexType name="RegistrationHistory">
+        <xs:annotation>
+            <xs:documentation>История постановок и снятий</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+			<xs:element name="registrationDate" type="xs:date" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата постановки на учет</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="unregistrationDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата снятия с учета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetTaxpayerRegistrationStatusRequest">
+        <xs:annotation>
+            <xs:documentation>Запрос на проверку статуса НП и получения истории постановок и снятий с учета НП НПД</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Inn" type="xs:string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>ИНН пользователя</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetTaxpayerRegistrationStatusResponse">
+        <xs:annotation>
+            <xs:documentation>Ответ на GetTaxpayerRegistrationStatusRequest</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="IsRegistred" type="xs:boolean">
+                    <xs:annotation>
+                        <xs:documentation>Стоит ли НП на учете в качестве НПД</xs:documentation>
+                    </xs:annotation>
+                </xs:element>			
+                <xs:element name="RegHistory" type="smzVS:RegistrationHistory" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>История постановок и снятий</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+		
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

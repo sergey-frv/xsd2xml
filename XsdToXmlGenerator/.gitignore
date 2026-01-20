@@ -1,0 +1,6 @@
+# Binaries
+[Bb]in/
+[Oo]bj/
+
+# Packages
+nupkg/

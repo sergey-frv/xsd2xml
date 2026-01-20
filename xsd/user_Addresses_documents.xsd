@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://mincomsvyaz/esia/user_Addresses_documents/1.0.0" xmlns:types="urn://mincomsvyaz/esia/base_types/1.0.0" targetNamespace="urn://mincomsvyaz/esia/user_Addresses_documents/1.0.0" elementFormDefault="qualified">
+	<xs:import namespace="urn://mincomsvyaz/esia/base_types/1.0.0" schemaLocation="commons/base_types.xsd"/>
+	<xs:element name="userAdresses" type="tns:userAdressesType">
+		<xs:annotation>
+			<xs:documentation>Адрес регистрации пользователя ЕСИА и адрес места жительства пользователя ЕСИА</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="userAdressesType">
+		<xs:sequence>
+			<xs:element name="registrationAddress" type="tns:addressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес регистрации пользователя ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="homeAddress" type="tns:addressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес места жительства пользователя ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="addressType">
+		<xs:annotation>
+			<xs:documentation>Адрес пользователя</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="addressStr" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес (одной строкой)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="countryId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Страна</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="zipCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Индекс</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="region" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Регион</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="area" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Район</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="additionArea" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дополнительная территория</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="city" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Город</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="district" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Округ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="street" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Улица</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="additionAreaStreet" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Улица на дополнительной территории</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="house" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дом</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="frame" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Корпус</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="building" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Строение</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flat" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Квартира</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fiasCode" type="tns:fiasCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ФИАС-код</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fiasCodeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

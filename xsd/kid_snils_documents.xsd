@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://mincomsvyaz/esia/snils_documents/1.0.0" xmlns:types="urn://mincomsvyaz/esia/base_types/1.0.0" targetNamespace="urn://mincomsvyaz/esia/snils_documents/1.0.0" elementFormDefault="qualified">
+    <xs:import namespace="urn://mincomsvyaz/esia/base_types/1.0.0" schemaLocation="commons/base_types.xsd"/>
+    <xs:element name="kidSnilsDocuments" type="tns:kidSnilsDocumentsType">
+        <xs:annotation>
+            <xs:documentation>СНИЛС ребенка из учетной записи родителя, пользователя ЕСИА</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="kidSnilsDocumentsType">
+        <xs:sequence>
+            <xs:element name="oid" type="types:personOidType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Внешний идентификатор объекта(родителя) - учётной записи пользователя - в БД ЕСИА
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="kidSnilsDocuments" type="types:kidSnilsDocumentsType" maxOccurs="48">
+                <xs:annotation>
+                    <xs:documentation>СНИЛС детей</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="personOidType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
