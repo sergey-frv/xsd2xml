@@ -10,13 +10,12 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <PackageId>XsdToXmlGenerator</PackageId>
     <Version>1.1.0</Version>
-    <Authors>Gemini</Authors>
+    <Authors>sergey-frv</Authors>
     <Description>A simple tool to generate XML from an XSD schema.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Fare" Version="2.2.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

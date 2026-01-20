@@ -4,3 +4,6 @@
 
 # Packages
 nupkg/
+
+# XSD Examples
+xsd/
