@@ -11,7 +11,7 @@ This is a simple .NET tool to generate an example XML file from an XSD schema.
     ```
 3.  Install the tool globally from the local package:
     ```bash
-    dotnet tool install --global --add-source ./nupkg XsdToXmlGenerator
+    dotnet tool install --global --add-source XsdToXmlGenerator/nupkg/ XsdToXmlGenerator
     ```
 
 ## How to Use
