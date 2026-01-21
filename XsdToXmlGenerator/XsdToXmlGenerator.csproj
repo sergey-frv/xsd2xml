@@ -9,7 +9,7 @@
     <ToolCommandName>xsd2xml</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <PackageId>XsdToXmlGenerator</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>sergey-frv</Authors>
     <Description>A simple tool to generate XML from an XSD schema.</Description>
   </PropertyGroup>

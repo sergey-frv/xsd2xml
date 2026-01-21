@@ -1,2 +1,9 @@
+# Binaries
 [Bb]in/
 [Oo]bj/
+
+# Packages
+nupkg/
+
+# XSD Examples
+xsd/
